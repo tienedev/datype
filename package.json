@@ -1,5 +1,5 @@
 {
-  "name": "datype",
+  "name": "@tienedev/datype",
   "version": "0.1.0",
   "type": "module",
   "description": "Modern TypeScript utility library with pragmatic typing and zero dependencies",
@@ -21,13 +21,13 @@
   ],
   "author": "Etienne Brun <tienedev@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/tiene9/datype#readme",
+  "homepage": "https://github.com/tienedev/datype#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiene9/datype.git"
+    "url": "git+https://github.com/tienedev/datype.git"
   },
   "bugs": {
-    "url": "https://github.com/tiene9/datype/issues"
+    "url": "https://github.com/tienedev/datype/issues"
   },
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.js",

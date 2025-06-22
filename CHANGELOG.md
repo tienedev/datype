@@ -61,5 +61,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive test suite with Vitest
 - Automated CI/CD with GitHub Actions
 
-[Unreleased]: https://github.com/tiene9/datype/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/tiene9/datype/releases/tag/v0.1.0
+[Unreleased]: https://github.com/tienedev/datype/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/tienedev/datype/releases/tag/v0.1.0

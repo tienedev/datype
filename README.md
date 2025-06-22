@@ -6,10 +6,10 @@
 
 [![npm version](https://img.shields.io/npm/v/datype.svg)](https://www.npmjs.com/package/datype)
 [![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)](https://www.typescriptlang.org/)
-[![Test Coverage](https://codecov.io/gh/tiene9/datype/branch/main/graph/badge.svg)](https://codecov.io/gh/tiene9/datype)
+[![Test Coverage](https://codecov.io/gh/tienedev/datype/branch/main/graph/badge.svg)](https://codecov.io/gh/tienedev/datype)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/datype)](https://bundlephobia.com/package/datype)
-[![GitHub Stars](https://img.shields.io/github/stars/tiene9/datype)](https://github.com/tiene9/datype)
+[![GitHub Stars](https://img.shields.io/github/stars/tienedev/datype)](https://github.com/tienedev/datype)
 
 [Installation](#installation) • [API Reference](#api-reference)
 
@@ -20,7 +20,7 @@
 **datype** is built for the modern TypeScript ecosystem. Unlike traditional utility libraries, every function is designed with TypeScript-first principles, providing perfect type inference without manual type annotations.
 
 ```typescript
-import { deepMerge, pick, groupBy } from 'datype';
+import { deepMerge, pick, groupBy } from '@tienedev/datype';
 
 // ✨ Perfect type inference - no manual typing needed
 const config = deepMerge(
@@ -31,7 +31,7 @@ const config = deepMerge(
 
 const users = [
   { name: 'Alice', role: 'admin', age: 32 },
-  { name: 'Bob', role: 'user', age: 28 }
+  { name: 'Bob', role: 'user', age: 28 },
 ];
 
 // Type-safe property selection
@@ -55,25 +55,34 @@ const byRole = groupBy(users, 'role');
 ## Installation
 
 ```bash
-npm install datype
+npm install @tienedev/datype
 ```
 
 ```bash
-yarn add datype
+yarn add @tienedev/datype
 ```
 
 ```bash
-pnpm add datype
+pnpm add @tienedev/datype
 ```
 
 ## Quick Start
 
 ```typescript
-import { 
-  deepMerge, pick, omit, get, set,
-  debounce, throttle, isEmpty, isEqual,
-  groupBy, mapValues, slugify
-} from 'datype';
+import {
+  deepMerge,
+  pick,
+  omit,
+  get,
+  set,
+  debounce,
+  throttle,
+  isEmpty,
+  isEqual,
+  groupBy,
+  mapValues,
+  slugify,
+} from '@tienedev/datype';
 
 // 🏗️ Object manipulation
 const merged = deepMerge(defaults, userConfig);
@@ -89,8 +98,12 @@ const debouncedSave = debounce(saveToAPI, 300);
 const throttledScroll = throttle(onScroll, 16);
 
 // ✅ Validation and comparison
-if (isEmpty(formData.email)) { /* handle empty */ }
-if (isEqual(prevState, newState)) { /* skip update */ }
+if (isEmpty(formData.email)) {
+  /* handle empty */
+}
+if (isEqual(prevState, newState)) {
+  /* skip update */
+}
 
 // 📊 Data transformation
 const grouped = groupBy(items, 'category');
@@ -124,7 +137,12 @@ const result2 = deepMerge(defaults, config, { arrayMerge: 'replace' });
 Extract specific properties with perfect type safety.
 
 ```typescript
-const user = { id: 1, name: 'Alice', email: 'alice@example.com', password: 'secret' };
+const user = {
+  id: 1,
+  name: 'Alice',
+  email: 'alice@example.com',
+  password: 'secret',
+};
 const safeUser = pick(user, ['id', 'name', 'email']);
 // Type: { id: number; name: string; email: string }
 ```
@@ -134,7 +152,12 @@ const safeUser = pick(user, ['id', 'name', 'email']);
 Exclude specific properties with type safety.
 
 ```typescript
-const user = { id: 1, name: 'Alice', email: 'alice@example.com', password: 'secret' };
+const user = {
+  id: 1,
+  name: 'Alice',
+  email: 'alice@example.com',
+  password: 'secret',
+};
 const publicUser = omit(user, ['password']);
 // Type: { id: number; name: string; email: string }
 ```
@@ -177,9 +200,9 @@ const numeric = mapValues(scores, score => parseInt(score, 10));
 Transform all object keys with built-in transformers.
 
 ```typescript
-import { mapKeys, keyTransformers } from 'datype';
+import { mapKeys, keyTransformers } from '@tienedev/datype';
 
-const apiData = { 'user_name': 'Alice', 'user_email': 'alice@example.com' };
+const apiData = { user_name: 'Alice', user_email: 'alice@example.com' };
 const camelCased = mapKeys(apiData, keyTransformers.camelCase);
 // { userName: 'Alice', userEmail: 'alice@example.com' }
 
@@ -205,7 +228,7 @@ Flatten nested arrays.
 ```typescript
 const nested = [1, [2, 3], [4, [5, 6]]];
 
-flatten(nested);     // [1, 2, 3, 4, [5, 6]]
+flatten(nested); // [1, 2, 3, 4, [5, 6]]
 flattenDeep(nested); // [1, 2, 3, 4, 5, 6]
 ```
 
@@ -217,7 +240,11 @@ Remove duplicates.
 const numbers = [1, 2, 2, 3, 3, 3];
 uniq(numbers); // [1, 2, 3]
 
-const users = [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }, { id: 1, name: 'Alice' }];
+const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 1, name: 'Alice' },
+];
 uniqBy(users, user => user.id); // [{ id: 1, name: 'Alice' }, { id: 2, name: 'Bob' }]
 ```
 
@@ -237,13 +264,17 @@ compact(mixed); // [1, 2, 3, 4, 5]
 Delay function execution until calls stop.
 
 ```typescript
-const searchAPI = debounce((query: string) => {
-  console.log('Searching:', query);
-}, 300, {
-  leading: false,  // Don't execute on leading edge
-  trailing: true,  // Execute on trailing edge
-  maxWait: 1000   // Force execution after 1s
-});
+const searchAPI = debounce(
+  (query: string) => {
+    console.log('Searching:', query);
+  },
+  300,
+  {
+    leading: false, // Don't execute on leading edge
+    trailing: true, // Execute on trailing edge
+    maxWait: 1000, // Force execution after 1s
+  }
+);
 
 // Rapid calls - only last one executes
 searchAPI('java');
@@ -252,7 +283,7 @@ searchAPI('javascript tutorial'); // This will execute after 300ms
 
 // Control methods
 searchAPI.cancel(); // Cancel pending execution
-searchAPI.flush();  // Execute immediately
+searchAPI.flush(); // Execute immediately
 ```
 
 #### `throttle<T extends (...args: any[]) => any>(func: T, delay: number, options?: ThrottleOptions): ThrottledFunction<T>`
@@ -260,12 +291,16 @@ searchAPI.flush();  // Execute immediately
 Limit function execution frequency.
 
 ```typescript
-const onScroll = throttle(() => {
-  console.log('Scroll position:', window.scrollY);
-}, 100, {
-  leading: true,  // Execute immediately on first call
-  trailing: true  // Execute once more after calls stop
-});
+const onScroll = throttle(
+  () => {
+    console.log('Scroll position:', window.scrollY);
+  },
+  100,
+  {
+    leading: true, // Execute immediately on first call
+    trailing: true, // Execute once more after calls stop
+  }
+);
 
 window.addEventListener('scroll', onScroll);
 ```
@@ -318,10 +353,10 @@ const add = (a: number, b: number, c: number) => a + b + c;
 const curriedAdd = curry(add);
 
 // All equivalent:
-curriedAdd(1, 2, 3);  // 6
-curriedAdd(1)(2, 3);  // 6
-curriedAdd(1, 2)(3);  // 6
-curriedAdd(1)(2)(3);  // 6
+curriedAdd(1, 2, 3); // 6
+curriedAdd(1)(2, 3); // 6
+curriedAdd(1, 2)(3); // 6
+curriedAdd(1)(2)(3); // 6
 
 // Partial application
 const add5 = curriedAdd(5);
@@ -335,15 +370,15 @@ add5(2, 3); // 10
 Check if value is empty.
 
 ```typescript
-isEmpty([]);        // true
-isEmpty({});        // true
-isEmpty('');        // true
-isEmpty(null);      // true
+isEmpty([]); // true
+isEmpty({}); // true
+isEmpty(''); // true
+isEmpty(null); // true
 isEmpty(undefined); // true
-isEmpty(0);         // false
-isEmpty(false);     // false
-isEmpty([1]);       // false
-isEmpty({a: 1});    // false
+isEmpty(0); // false
+isEmpty(false); // false
+isEmpty([1]); // false
+isEmpty({ a: 1 }); // false
 ```
 
 #### `isEqual(a: any, b: any): boolean`
@@ -354,7 +389,7 @@ Deep equality comparison with circular reference support.
 const obj1 = { a: 1, b: { c: 2 } };
 const obj2 = { a: 1, b: { c: 2 } };
 
-obj1 === obj2;       // false
+obj1 === obj2; // false
 isEqual(obj1, obj2); // true
 
 // Handles complex types
@@ -370,7 +405,7 @@ Create deep clone with circular reference protection.
 ```typescript
 const original = {
   user: { name: 'Alice' },
-  items: [1, 2, { nested: true }]
+  items: [1, 2, { nested: true }],
 };
 
 const clone = cloneDeep(original);
@@ -389,20 +424,26 @@ slugify('Hello World!'); // 'hello-world'
 slugify('Café & Crème'); // 'cafe-and-creme'
 slugify('TypeScript is Awesome!', {
   separator: '_',
-  maxLength: 20
+  maxLength: 20,
 }); // 'typescript_is_awesome'
 ```
 
 #### String Case Transformers
 
 ```typescript
-import { camelCase, kebabCase, snakeCase, pascalCase, constantCase } from 'datype';
+import {
+  camelCase,
+  kebabCase,
+  snakeCase,
+  pascalCase,
+  constantCase,
+} from '@tienedev/datype';
 
-camelCase('hello-world');    // 'helloWorld'
-kebabCase('HelloWorld');     // 'hello-world'
-snakeCase('helloWorld');     // 'hello_world'
-pascalCase('hello-world');   // 'HelloWorld'
-constantCase('helloWorld');  // 'HELLO_WORLD'
+camelCase('hello-world'); // 'helloWorld'
+kebabCase('HelloWorld'); // 'hello-world'
+snakeCase('helloWorld'); // 'hello_world'
+pascalCase('hello-world'); // 'HelloWorld'
+constantCase('helloWorld'); // 'HELLO_WORLD'
 ```
 
 #### `capitalize(text: string): string`
@@ -410,15 +451,15 @@ constantCase('helloWorld');  // 'HELLO_WORLD'
 Capitalize first letter of each word.
 
 ```typescript
-capitalize('hello world');     // 'Hello World'
-capitalize('HELLO WORLD');     // 'Hello World'
-capitalize('hello-world');     // 'Hello-World'
+capitalize('hello world'); // 'Hello World'
+capitalize('HELLO WORLD'); // 'Hello World'
+capitalize('hello-world'); // 'Hello-World'
 ```
 
 #### Text Truncation
 
 ```typescript
-import { truncate, truncateWords, truncateMiddle } from 'datype';
+import { truncate, truncateWords, truncateMiddle } from '@tienedev/datype';
 
 truncate('This is a long text', 10); // 'This is a…'
 truncateWords('One two three four five', 3); // 'One two three…'
@@ -435,7 +476,7 @@ Group array elements.
 const users = [
   { name: 'Alice', role: 'admin', age: 30 },
   { name: 'Bob', role: 'user', age: 25 },
-  { name: 'Charlie', role: 'admin', age: 35 }
+  { name: 'Charlie', role: 'admin', age: 35 },
 ];
 
 // Group by property
@@ -443,14 +484,16 @@ const byRole = groupBy(users, 'role');
 // { admin: [Alice, Charlie], user: [Bob] }
 
 // Group by function
-const byAgeGroup = groupBy(users, user => user.age >= 30 ? 'senior' : 'junior');
+const byAgeGroup = groupBy(users, user =>
+  user.age >= 30 ? 'senior' : 'junior'
+);
 // { senior: [Alice, Charlie], junior: [Bob] }
 ```
 
 ### Type Guards
 
 ```typescript
-import { isPlainObject, isArray, isFunction } from 'datype';
+import { isPlainObject, isArray, isFunction } from '@tienedev/datype';
 
 isPlainObject({}); // true
 isPlainObject([]); // false
@@ -469,13 +512,13 @@ isFunction('string'); // false
 
 ```typescript
 // 1. Named imports (recommended for most projects)
-import { deepMerge, pick, debounce } from 'datype';
+import { deepMerge, pick, debounce } from '@tienedev/datype';
 
 // 2. Individual imports (maximum tree-shaking)
 import { deepMerge } from 'datype/deepMerge';
 
 // 3. Wildcard import (when using many functions)
-import * as dt from 'datype';
+import * as dt from '@tienedev/datype';
 const result = dt.deepMerge(obj1, obj2);
 ```
 
@@ -499,12 +542,12 @@ const result = dt.deepMerge(obj1, obj2);
 
 **datype** is designed for optimal bundle size. Import only what you need:
 
-| Import | Bundle Impact |
-|--------|--------------|
-| `import { pick }` | ~200 bytes |
-| `import { deepMerge }` | ~800 bytes |
-| `import { debounce, throttle }` | ~600 bytes |
-| Full library | ~5KB gzipped |
+| Import                          | Bundle Impact |
+| ------------------------------- | ------------- |
+| `import { pick }`               | ~200 bytes    |
+| `import { deepMerge }`          | ~800 bytes    |
+| `import { debounce, throttle }` | ~600 bytes    |
+| Full library                    | ~5KB gzipped  |
 
 ## Browser Support
 
@@ -523,7 +566,7 @@ We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) 
 
 ## License
 
-[MIT](LICENSE) © [Etienne Brun](https://github.com/tiene9)
+[MIT](LICENSE) © [Etienne Brun](https://github.com/tienedev)
 
 ---
 
@@ -531,6 +574,6 @@ We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) 
 
 **Built with ❤️ for the TypeScript community**
 
-[Report Bug](https://github.com/tiene9/datype/issues) • [Request Feature](https://github.com/tiene9/datype/issues) • [Documentation](https://github.com/tiene9/datype)
+[Report Bug](https://github.com/tienedev/datype/issues) • [Request Feature](https://github.com/tienedev/datype/issues) • [Documentation](https://github.com/tienedev/datype)
 
 </div>
