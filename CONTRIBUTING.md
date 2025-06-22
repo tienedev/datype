@@ -6,29 +6,33 @@ We welcome contributions to make datype even better! This guide will help you ge
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm 8+
 - Git
 
 ### Getting Started
 
 1. **Fork and clone the repository**
+
    ```bash
    git clone https://github.com/your-username/datype.git
    cd datype
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run tests to verify setup**
+
    ```bash
    npm test
    ```
 
 4. **Start development mode**
+
    ```bash
    npm run dev
    ```
@@ -45,8 +49,6 @@ src/
 │   ├── performance.ts
 │   ├── strings.ts
 │   └── validation.ts
-├── utils/
-│   └── types.ts         # Shared TypeScript types
 └── index.ts            # Main entry point
 ```
 
@@ -66,6 +68,7 @@ When adding a new function:
 
 1. **Create the function directory**: `src/functionName/`
 2. **Implement with TypeScript excellence**:
+
    - Advanced type inference
    - JSDoc documentation with examples
    - Input validation and error handling
@@ -73,6 +76,7 @@ When adding a new function:
    - Performance optimization
 
 3. **Write comprehensive tests**:
+
    - All happy paths
    - Edge cases and error conditions
    - Real-world use cases
@@ -80,6 +84,7 @@ When adding a new function:
    - Aim for 95%+ coverage
 
 4. **Update exports**:
+
    - Add to `src/index.ts`
    - Add to appropriate category in `src/categories/`
    - Export types if applicable
@@ -142,16 +147,19 @@ describe('functionName', () => {
 ### 2. Development Workflow
 
 1. **Create a feature branch**
+
    ```bash
    git checkout -b feature/function-name
    ```
 
 2. **Implement your changes**
+
    - Follow the guidelines above
    - Run tests frequently: `npm test`
    - Check TypeScript: `npm run typecheck`
 
 3. **Ensure quality**
+
    ```bash
    npm run quality  # Runs lint, typecheck, format-check, test
    ```
@@ -164,6 +172,7 @@ describe('functionName', () => {
 ### 3. Submitting Changes
 
 1. **Commit with conventional commits**
+
    ```bash
    git commit -m "feat: add mapKeys function with case conversion helpers"
    git commit -m "fix: handle edge case in deepMerge circular references"
@@ -171,6 +180,7 @@ describe('functionName', () => {
    ```
 
 2. **Push and create PR**
+
    ```bash
    git push origin feature/function-name
    ```
@@ -238,7 +248,7 @@ See `FUNCTIONS_ROADMAP.md` for complete list and details.
 Releases follow semantic versioning:
 
 - **Patch**: Bug fixes, performance improvements
-- **Minor**: New functions, non-breaking feature additions  
+- **Minor**: New functions, non-breaking feature additions
 - **Major**: Breaking changes (rare, avoid when possible)
 
 ## Community
