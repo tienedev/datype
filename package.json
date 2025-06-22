@@ -1,0 +1,87 @@
+{
+  "name": "datype",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Modern TypeScript utility library with pragmatic typing and zero dependencies",
+  "keywords": [
+    "typescript",
+    "utilities",
+    "tree-shaking",
+    "functional",
+    "immutable",
+    "type-safe",
+    "modern",
+    "zero-dependencies",
+    "developer-experience",
+    "ergonomic",
+    "pragmatic",
+    "object-manipulation",
+    "type-inference",
+    "bundle-optimization"
+  ],
+  "author": "Etienne Brun <tienedev@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/tiene9/datype#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiene9/datype.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tiene9/datype/issues"
+  },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./*": {
+      "types": "./dist/types/*/index.d.ts",
+      "import": "./dist/esm/*/index.js",
+      "require": "./dist/cjs/*/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CONTRIBUTING.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/types && rollup -c",
+    "dev": "rollup -c -w",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage-watch": "vitest --watch --coverage",
+    "lint": "eslint src --fix",
+    "format": "prettier --write src/**/*.ts",
+    "typecheck": "tsc --noEmit",
+    "release": "npm run build && npm test && npm run typecheck && npm run lint && npm run format"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "rollup": "^4.12.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,80 @@
+name: 🐛 Bug Report
+description: Create a report to help us reproduce and fix the bug
+labels: ['bug', 'needs-triage']
+assignees:
+  - tiene9
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 
+        Please provide as much detail as possible to help us reproduce the issue.
+
+  - type: input
+    id: version
+    attributes:
+      label: datype version
+      description: Which version of datype are you using?
+      placeholder: '0.1.0'
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Import function '...'
+        2. Call with parameters '...'
+        3. Expected '...' but got '...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: code-sample
+    attributes:
+      label: Code sample
+      description: Please provide a minimal code sample that reproduces the issue
+      render: typescript
+      placeholder: |
+        import { deepMerge } from 'datype';
+
+        const result = deepMerge(...);
+        // Expected: ...
+        // Actual: ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Please provide your environment details
+      value: |
+        - OS: [e.g. macOS, Windows, Linux]
+        - Node.js version: [e.g. 18.0.0]
+        - TypeScript version: [e.g. 5.0.0]
+        - Package manager: [e.g. npm, yarn, pnpm]
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
