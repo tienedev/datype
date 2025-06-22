@@ -15,7 +15,7 @@ We welcome contributions to make datype even better! This guide will help you ge
 1. **Fork and clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/datype.git
+   git clone https://github.com/tienedev/datype.git
    cd datype
    ```
 
