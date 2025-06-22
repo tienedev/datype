@@ -4,11 +4,11 @@
 
 **A modern, TypeScript-first utility library with perfect type inference and zero dependencies.**
 
-[![npm version](https://img.shields.io/npm/v/datype.svg)](https://www.npmjs.com/package/datype)
+[![npm version](https://img.shields.io/npm/v/datype.svg)](https://www.npmjs.com/package/@tienedev/datype)
 [![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue.svg)](https://www.typescriptlang.org/)
 [![Test Coverage](https://codecov.io/gh/tienedev/datype/branch/main/graph/badge.svg)](https://codecov.io/gh/tienedev/datype)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bundle Size](https://img.shields.io/bundlephobia/minzip/datype)](https://bundlephobia.com/package/datype)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/datype)](https://bundlephobia.com/package/@tienedev/datype)
 [![GitHub Stars](https://img.shields.io/github/stars/tienedev/datype)](https://github.com/tienedev/datype)
 
 [Installation](#installation) • [API Reference](#api-reference)
